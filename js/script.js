@@ -24,7 +24,7 @@ let appData = {
 function chooseExpenses() {
     // Цикл for 
     for (let i = 0; i < 1; i++) {
-        let a = prompt("введите обязательно статью расходов в этом месяце ", ''),
+        let a = prompt("введите обязательную статью расходов в этом месяце ", ''),
             b = prompt("Во сколько обойдется?", '');
 
 
@@ -37,7 +37,7 @@ function chooseExpenses() {
             i = i - 1;
             alert("некорректный ввод, повторите попытку!");
         }
-    };
+    }
     // Цикл for 
 }
 
@@ -78,20 +78,24 @@ function detectDayBudget() {
 detectDayBudget();
 //Ежедневный бюджет
 
-// статья необязательных расходов 
+//статья необязательных расходов 
 function chooseOptExpenses() {
     let q1 = prompt("Статья необязательных расходов?"),
         q2 = prompt("Статья необязательных расходов?"),
         q3 = prompt("Статья необязательных расходов?");
 
-    for (i = 0; i < 1; i++) {
+    for (let i = 0; i < 2; i++) {
 
-        if ((typeof (q1) && typeof (q2) && typeof (q3)) === 'string' && (typeof (a)) != null && (typeof (b)) != null &&
-            a != '' && b != '' && a.length < 50) {
+        if ((typeof (q1) && typeof (q2) && typeof (q3)) === 'string' && (typeof (q1)) != null && (typeof (q2)) != null &&
+            (typeof (q3)) != null && q1 != '' && q2 != '' && q3 != '' && q1.length < 50 && q2.length < 50 && q3.length < 50) {
             console.log('done');
-            appData.expenses[a] = b;
+            appData.optionalExpenses['1'] = q1;
+            appData.optionalExpenses['2'] = q2;
+            appData.optionalExpenses['3'] = q3;
         } else {
-            return chooseExpenses();
+        alert(" Ошибка ввода! ")
+        return chooseOptExpenses();
+
         }
     }
 
@@ -99,4 +103,4 @@ function chooseOptExpenses() {
 
 chooseOptExpenses();
 
-// статья необязательных расходов 
+// статья необязательных расходов
