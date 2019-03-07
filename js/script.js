@@ -43,6 +43,13 @@ function chooseExpenses() {
 
 chooseExpenses();
 
+// Ежедневный бюджет
+function detectDayBudget() {
+    appData.moneyPerDay = (appData.budget / 30).toFixed();
+    alert("Ежедневный бюджет: " + appData.moneyPerDay);
+}
+detectDayBudget();
+//Ежедневный бюджет
 
 
 function detectLevel() {
@@ -67,36 +74,16 @@ function checkSavings() {
         appData.monthIncome = save / 100 / 12 * percent;
         alert('Доход в месяц с вашего депозита: ' + appData.monthIncome);
     }
-};
+}
 checkSavings();
 
-// Ежедневный бюджет
-function detectDayBudget() {
-    appData.moneyPerDay = (appData.budget / 30).toFixed();
-    alert("Ежедневный бюджет: " + appData.moneyPerDay);
-};
-detectDayBudget();
-//Ежедневный бюджет
+
 
 //статья необязательных расходов 
 function chooseOptExpenses() {
-    let q1 = prompt("Статья необязательных расходов?"),
-        q2 = prompt("Статья необязательных расходов?"),
-        q3 = prompt("Статья необязательных расходов?");
-
-    for (let i = 0; i < 2; i++) {
-
-        if ((typeof (q1) && typeof (q2) && typeof (q3)) === 'string' && (typeof (q1)) != null && (typeof (q2)) != null &&
-            (typeof (q3)) != null && q1 != '' && q2 != '' && q3 != '' && q1.length < 50 && q2.length < 50 && q3.length < 50) {
-            console.log('done');
-            appData.optionalExpenses['1'] = q1;
-            appData.optionalExpenses['2'] = q2;
-            appData.optionalExpenses['3'] = q3;
-        } else {
-        alert(" Ошибка ввода! ")
-        return chooseOptExpenses();
-
-        }
+    for (let i = 1; i < 3; i++) {
+        let opt = prompt("Статья необязательных расходов?", '');
+        appData.optionalExpenses[i] = opt;
     }
 
 }
